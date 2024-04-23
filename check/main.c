@@ -6,7 +6,7 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:00:26 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/23 13:19:00 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:23:38 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,23 @@
 
 int	ft_memmove_check(void)
 {
+	//todo: test what happens when there is a null character in the middle of the string
+	//test what happens at the end of the string if n is bigger
 	char	str[25] = "Moin User!";
 	char	str1[25] = "Moin User!";
 	char	strstr[38] = "HelloShinyRoundBall";
 	printf("str before memmove: %s\n dest after memmmove: ", str);
-	puts(memmove(str + 5, str, 12));
+	puts(memmove(str + 11, str, 14));
 	printf("str after memmove:");
 	puts(str);
 	printf("str1 before memmove: %s\n dest after memmmove: ", str1);
-	puts(memcpy(str + 6, str, 12));
+	puts(memcpy(str + 3, str, 6));
 	printf("str1 memmove:");
 	puts(str);
 	printf("strstr before memmove: %s\n dest after memmmove: ", strstr);
-	puts(memmove(strstr + 10, strstr, 19));
+	puts(memmove(strstr + 5, strstr, 15));
 	printf("strstr after memmove: %s \n", strstr);
+	
 	return (0);
 }
 
@@ -37,13 +40,13 @@ int	ft_memcpy_check(void)
 	char	str[25] = "Moin User!";
 	char	str1[25] = "Moin User!";
 	printf("str before: %s\n", str);
-	puts(memcpy(str + 5, str, 12));
+	puts(memcpy(str + 5, str, 5));
 	printf("str after cpy:\n");
 	puts(str);
 	printf("str1 before: %s\n", str1);
-	puts(memcpy(str1 + 6, str1, 12));
+	puts(memcpy(str1 + 3, str1, 6));
 	printf("str1 after cpy:\n");
-	puts(str);
+	puts(str1);
 	return (0);
 }
 

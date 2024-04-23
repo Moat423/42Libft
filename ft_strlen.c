@@ -6,11 +6,13 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:46:38 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/22 13:36:42 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:42:21 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlen(const char *s)
+#include <stddef.h>
+
+size_t	ft_strlen(const char *s)
 {
 	int	i;
 

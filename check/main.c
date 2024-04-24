@@ -6,12 +6,13 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:00:26 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/23 16:23:38 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/04/24 13:26:13 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 int	ft_memmove_check(void)
 {
@@ -50,6 +51,14 @@ int	ft_memcpy_check(void)
 	return (0);
 }
 
+int	ft_isalpha_check(void)
+{
+	printf("A: %d\n", (isalpha(65)));
+	printf("a: %d\n", (isalpha(97)));
+	printf("^: %d\n", (isalpha(94)));
+	return (0);
+}
+
 /*
 int	ft_ascii_check(void)
 {
@@ -65,6 +74,8 @@ int	ft_ascii_check(void)
 
 int	main()
 {
+	printf("ISALPHA:\n");
+	ft_isalpha_check();
 	printf("MEMCPY:\n");
 	ft_memcpy_check();
 	printf("MEMMOVE:\n");

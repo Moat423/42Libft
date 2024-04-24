@@ -6,8 +6,17 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:10:02 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/24 13:12:01 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/04/24 13:30:58 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+int	ft_isalpha(int c);
 
+int	ft_toupper(int c)
+{
+	if (ft_isalpha(c) == 1)
+		c += 32;
+	else if (ft_isalpha(c) == 2)
+		c -= 32;
+	return (c);
+}

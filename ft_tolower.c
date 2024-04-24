@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 13:10:02 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/24 13:34:37 by lmeubrin         ###   ########.fr       */
+/*   Created: 2024/04/24 13:33:29 by lmeubrin          #+#    #+#             */
+/*   Updated: 2024/04/24 13:35:29 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isalpha(int c);
 
-int	ft_toupper(int c)
+int	ft_tolower(int c)
 {
-	if (ft_isalpha(c) == 2)
-		c -= 32;
+	if (ft_isalpha(c) == 1)
+		c += 32;
 	return (c);
 }

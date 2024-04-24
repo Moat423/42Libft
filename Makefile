@@ -1,25 +1,42 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/22 15:55:27 by lmeubrin          #+#    #+#              #
-#    Updated: 2024/04/22 16:40:33 by lmeubrin         ###   ########.fr        #
+#    Updated: 2024/04/24 16:55:37 by lmeubrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Werror -Wall -Wextra
 NAME = libft.a
+LIB = ar -rcf ??
 
-SRCS = ft_isalpha.c  ft_isprint.c  ft_memset.c ft_bzero.c    ft_isascii.c  ft_memcpy.c   ft_strlcpy.c ft_isalnum.c  ft_isdigit.c  ft_memmove.c  ft_strlen.c
+SRC_DIR = ./
 
-%.o: %.c
+SRCS = $(shell find $(SRC_DIR) -name '*.c')
+
+OBJS = $(SRCS: %= $(BUILD_DIR)/%.o)
+
+$(NAME):
+	$(OBJS)
 	$(CC) -c $(CFLAGS) -o $@ 
+
+all:
+	$(NAME)
 
 clean:
 	rm -f *.o
+
+fclean:
+	clean
+	rm -f $(NAME)
+
+re:
+	fclean
+	all
 
 .PHONY: all, clean, fclean, re

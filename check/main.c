@@ -6,13 +6,14 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:00:26 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/24 13:26:13 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:38:34 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <assert.h>
 
 int	ft_memmove_check(void)
 {
@@ -22,7 +23,7 @@ int	ft_memmove_check(void)
 	char	str1[25] = "Moin User!";
 	char	strstr[38] = "HelloShinyRoundBall";
 	printf("str before memmove: %s\n dest after memmmove: ", str);
-	puts(memmove(str + 11, str, 14));
+	assert(memmove(str + 11, str, 14));
 	printf("str after memmove:");
 	puts(str);
 	printf("str1 before memmove: %s\n dest after memmmove: ", str1);
@@ -53,9 +54,17 @@ int	ft_memcpy_check(void)
 
 int	ft_isalpha_check(void)
 {
-	printf("A: %d\n", (isalpha(65)));
-	printf("a: %d\n", (isalpha(97)));
-	printf("^: %d\n", (isalpha(94)));
+	int		i;
+	char	letter;
+
+	i = 0;
+	letter = i;
+	while (i <= 128)
+		{
+		printf("Number:%d, %c: %d\n", i, letter, (isalpha(i)));
+		i++;
+		letter++;
+		}
 	return (0);
 }
 
@@ -71,7 +80,12 @@ int	ft_ascii_check(void)
 	return (0);
 }
 */
-
+/*
+int	ft_strchr_check(void)
+{
+	
+}
+*/
 int	main()
 {
 	printf("ISALPHA:\n");

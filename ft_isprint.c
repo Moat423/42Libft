@@ -6,13 +6,13 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:55:05 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/22 11:58:16 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:43:00 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isprint(int c)
 {
 	if ((c >= 32) && (c <= 126))
-		return (1);
+		return (1024);
 	return (0);
 }

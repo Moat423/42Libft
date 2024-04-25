@@ -6,15 +6,13 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:33:29 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/24 13:35:29 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:40:33 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c);
-
 int	ft_tolower(int c)
 {
-	if (ft_isalpha(c) == 1)
+	if ((c <= 'Z') && (c >= 'A'))
 		c += 32;
 	return (c);
 }

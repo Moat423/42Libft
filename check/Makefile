@@ -5,41 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/22 15:55:27 by lmeubrin          #+#    #+#              #
-#    Updated: 2024/04/25 12:28:54 by lmeubrin         ###   ########.fr        #
+#    Created: 2024/04/25 12:59:00 by lmeubrin          #+#    #+#              #
+#    Updated: 2024/04/25 13:28:37 by lmeubrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Werror -Wall -Wextra
-NAME = libft.a
-LIB = ar
-LIBFLAGS = rcf
-DEPS = libft.h
+CFLAGS = -Werror -Wall -Wextra -I
+NAME = test.a
+DEPS = stdio.h unistd.h stddef.h
+SRCS = (wildcard *.c)
+OBJ = (wildcard *.o)
 
-BUILD_DIR = .
-SRC_DIR = .
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
-SRCS = $(shell find $(SRC_DIR) -name '*.c')
-
-OBJS = $(SRCS: %.c= (BUILD_DIR)/%.o)
-
-$(NAME): $(OBJS)
-	$(LIB) $(LIBFLAGS) $@ $^
-
-%.o: %.c
-	$(CC) $(CFLAGS) $(DEPS) -c $< -o $@ 
-	
-$(OBJS): $(SRSC)
-
-all: $(NAME)
-
-clean:
-	rm -f $(OBJS)
-
-fclean: clean
-	rm -f $(NAME)
-
-re: fclean all
-
-.PHONY: all, clean, fclean, re
+$(NAME): $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)

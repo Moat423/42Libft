@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   testformemchr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 16:57:17 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/25 11:46:49 by lmeubrin         ###   ########.fr       */
+/*   Created: 2024/04/26 10:20:30 by lmeubrin          #+#    #+#             */
+/*   Updated: 2024/04/26 10:34:04 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
-char	*ft_strrchr(const char *s, int c)
+int	main(void)
 {
-	char	c_c;
-	size_t	i;
+	char		c_c;
+	char		*c_s;
+	size_t		n;
 
-	i = (ft_strlen(s)) - 1;
-	c_c = (char) c;
-	while (i >= 0)
+	n = 18;
+	c_c = 'z';
+	c_s = "Hello World!";
+	printf("c_s: %s\n", c_s);
+	while ((*c_s != c_c) && (n > 0) && *c_s)
 	{
-		if (c_c == s[i])
-			return ((char *)(s + i));
-		i--;
+		++c_s;
+		printf("c_s: %s\n", c_s);
+		printf("*c_s: %c\n", *c_s);
+		printf("*c_s as int: %d\n", *c_s);
 	}
-	return (NULL);
 }

@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
 char	*strrchr(const char *s, int c)
 {
 	char	c_c;
-	int		i;
-	int		len;
+	size_t	i;
 
 	i = (ft_strlen(s)) - 1;
 	c_c = (char) c;

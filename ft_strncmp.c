@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 13:48:49 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/24 14:22:33 by lmeubrin         ###   ########.fr       */
+/*   Created: 2024/04/25 17:05:00 by lmeubrin          #+#    #+#             */
+/*   Updated: 2024/04/25 17:13:51 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*strchr(const char *s, int c)
+int	strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	c_c;
-	size_t	i;
+	int	i;
 
 	i = 0;
-	c_c = (char) c;
-	while (s[i])
-	{
-		if (c_c == s[i])
-			return ((char *)(s + i));
+	while ((s1[i] == s2[i]) && (i < n) && (s1[i] != 0))
 		i++;
-	}
-	return (NULL);
+	return (s1[i] - s2[i]);
 }

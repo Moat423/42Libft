@@ -6,15 +6,15 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:26:02 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/25 11:07:08 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:06:21 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	int		i;
+	size_t	i;
 	char	*c_s;
 
 	i = 0;

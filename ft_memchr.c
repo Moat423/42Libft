@@ -6,7 +6,7 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:01:35 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/26 10:36:29 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:34:17 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	c_c = c;
 	c_s = (unsigned char *) s;
 	while ((*c_s != c_c) && (n > 0) && *c_s)
+	{
 		++c_s;
+		n--;
+	}
 	return ((void *) c_s);
 }

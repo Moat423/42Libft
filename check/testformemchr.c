@@ -6,7 +6,7 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:20:30 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/26 10:34:04 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:35:01 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int	main(void)
 		printf("c_s: %s\n", c_s);
 		printf("*c_s: %c\n", *c_s);
 		printf("*c_s as int: %d\n", *c_s);
+		n--;
 	}
 }

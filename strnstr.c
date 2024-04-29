@@ -1,49 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   strnstr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 14:30:16 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/29 19:27:22 by lmeubrin         ###   ########.fr       */
+/*   Created: 2024/04/29 19:20:55 by lmeubrin          #+#    #+#             */
+/*   Updated: 2024/04/29 19:48:53 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s);
-
-size_t	ft_nocrash_strlen(const char *s, size_t size)
+char	*strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	len;
-
-	len = 0;
-	while ((size) && s[len])
-	{
-		size--;
-		len++;
-	}
-	return (len);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
+	size_t	l_index;
 	size_t	i;
 
+	l_index = 0;
 	i = 0;
-	if (size != 0)
+	if (*little == '\0')
+		return ((char *) big);
+	while ((i <= len) && (big[i]))
 	{
-		while (((i + 1) < size) && (src[i] != '\0'))
-		{
-			dst[i] = src[i];
+		if (big[i] != little[0])
 			i++;
-		}
-		while ((i < size) && size != 0)
+		while (big[i] == little[l_index] && big[i] && little[l_index])
 		{
-			dst[i] = '\0';
 			i++;
+			l_index++;
 		}
+		if (little[l_index] == '\0')
+			return ((char *)((i - l_index) + big));
+		else
+			l_index = 0;
 	}
-	return (ft_strlen(src));
+	return (NULL);
 }

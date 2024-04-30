@@ -14,19 +14,6 @@
 
 size_t	ft_strlen(const char *s);
 
-size_t	ft_nocrash_strlen(const char *s, size_t size)
-{
-	size_t	len;
-
-	len = 0;
-	while ((size) && s[len])
-	{
-		size--;
-		len++;
-	}
-	return (len);
-}
-
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
@@ -39,11 +26,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 			dst[i] = src[i];
 			i++;
 		}
-		while ((i < size) && size != 0)
-		{
-			dst[i] = '\0';
-			i++;
-		}
+		dst[i] = '\0';
 	}
 	return (ft_strlen(src));
 }

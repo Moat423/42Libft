@@ -10,6 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
+SHELL = /bin/sh
 CC = cc
 CFLAGS = -Werror -Wall -Wextra -I
 NAME = libft.a

@@ -21,6 +21,8 @@ char	*strnstr(const char *big, const char *little, size_t len)
 	i = 0;
 	if (*little == '\0')
 		return ((char *) big);
+	if (len == 0)
+		return (0);
 	while ((i <= len) && (big[i]))
 	{
 		if (big[i] != little[0])

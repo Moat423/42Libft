@@ -89,7 +89,19 @@ int	ft_strchr_check(void)
 
 int	ft_isprint_check()
 {
-	
+	int		i;
+	char	letter;
+
+	i = 0;
+	letter = i;
+	while (i <= 128)
+		{
+		printf("Number:%d, %c: %d\n", i, letter, (isprint(i)));
+		i++;
+		letter++;
+		}
+	printf("\n");
+	return (0);
 }
 int	main()
 {
@@ -99,7 +111,7 @@ int	main()
 	ft_memcpy_check();
 	printf("MEMMOVE:\n");
 	ft_memmove_check();
-	prinft("ISPRINT:\n");
+	printf("ISPRINT:\n");
 	ft_isprint_check();
 	return (0);
 }

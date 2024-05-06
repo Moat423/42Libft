@@ -16,19 +16,33 @@
 int	isprint_test_cases(void)
 {
 	int	i;
+	int	flag;
 
 	i = 0;
-	while (ft_isprint(i) == isprint(i) && (i < 129))
+	flag = 0;
+	while ((i < 129))
 	{
+		while ((i >= 32) && (i <= 126))
+		{
+			if (ft_isprint(i) != 0)
+			{
+				printf("%d, ", i);
+				i++;
+			}
+			else 
+			{
+				flag = 1;
+				printf(COLOR_RED"\nisprint unsuccessful, error at %d\n"COLOR_RESET, i);
+				break ;
+			}
+		}
 		printf("%d, ", i);
 		i++;
 	}
-	if (i == 128)
+	if (flag == 0)
 	{
 		printf(COLOR_GREEN"\nisprint successfull\n"COLOR_RESET);
 		return (1);
 	}
-	else
-		printf(COLOR_RED"\nisprint unsuccessful, error at %d\n"COLOR_RESET, i);
 	return (0);
 }

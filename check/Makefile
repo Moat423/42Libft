@@ -11,14 +11,15 @@
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Werror -Wall -Wextra -I
+CFLAGS = -Werror -Wall -Wextra -I../
 NAME = test.a
-DEPS = stdio.h unistd.h stddef.h
-SRCS = (wildcard *.c)
-OBJ = (wildcard *.o)
+DEPS = 
+SRCS = ft_strnstr_check.c ft_isprint_check.c ft_memchr_check.c main.c
+LDFLAGS = -L$(LIBPATH) -lft
+LIBPATH = ../
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 $(NAME): $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
+	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)

@@ -86,6 +86,11 @@ int	ft_strchr_check(void)
 	
 }
 */
+
+int	ft_isprint_check()
+{
+	
+}
 int	main()
 {
 	printf("ISALPHA:\n");
@@ -94,5 +99,7 @@ int	main()
 	ft_memcpy_check();
 	printf("MEMMOVE:\n");
 	ft_memmove_check();
+	prinft("ISPRINT:\n");
+	ft_isprint_check();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 11:48:27 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/26 13:48:32 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/05/07 15:38:03 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 int	memchr_test_cases(void)
 {
-	int	c;
+	int		c;
 	size_t	n;
-	int	arr_num[] = {4, 17, 0, 0, 19384, 3};
-	int	empty_arr_num[] = {};
+	int		arr_num[] = {4, 17, 0, 0, 19384, 3};
+	int		empty_arr_num[] = {};
 	char	arr_str[] = "Hello World!";
 	char	empty_arr_str[] = "";
 

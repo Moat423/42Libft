@@ -6,7 +6,7 @@
 #    By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/25 12:59:00 by lmeubrin          #+#    #+#              #
-#    Updated: 2024/05/06 20:06:18 by lmeubrin         ###   ########.fr        #
+#    Updated: 2024/05/07 20:35:29 by lmeubrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CFLAGS = -Werror -Wall -Wextra -I../
 NAME = test.a
 DEPS = 
 SRCS = main.c ft_strnstr_check.c ft_isprint_check.c ft_memchr_check.c \
-	   ft_atoi_check.c
+	   ft_atoi_check.c ft_bzero_check.c ft_strncmp_check.c \
+	   ft_calloc_check.c
 OBJS = $(SRCS:%=$(OBJ_DIR)/%.o)
 LDFLAGS = -L../ -lft
 LIBPATH = ../libft.a

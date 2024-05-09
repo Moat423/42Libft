@@ -6,7 +6,7 @@
 #    By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/25 12:59:00 by lmeubrin          #+#    #+#              #
-#    Updated: 2024/05/07 20:35:29 by lmeubrin         ###   ########.fr        #
+#    Updated: 2024/05/08 13:20:57 by lmeubrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,12 @@ SRC_DIR = .
 OBJ_DIR = obj
 CFLAGS = -Werror -Wall -Wextra -I../
 NAME = test.a
+HEADER = libft_check.h
 DEPS = 
 SRCS = main.c ft_strnstr_check.c ft_isprint_check.c ft_memchr_check.c \
 	   ft_atoi_check.c ft_bzero_check.c ft_strncmp_check.c \
-	   ft_calloc_check.c
+	   ft_calloc_check.c ft_strdup_check.c ft_substr_check.c \
+
 OBJS = $(SRCS:%=$(OBJ_DIR)/%.o)
 LDFLAGS = -L../ -lft
 LIBPATH = ../libft.a
@@ -26,14 +28,14 @@ LIBPATH = ../libft.a
 $(NAME): $(OBJS) $(LIBPATH)
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
-$(OBJ_DIR)/%.c.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.c.o: $(SRC_DIR)/%.c $(HEADER)| $(OBJ_DIR)
 	$(CC) -c $< $(CFLAGS) -o $@
 
 $(OBJ_DIR):
 	mkdir $@
 
 lib:
-	cd ../ && $(MAKE)
+	cd ../ && $(MAKE) re
 	$(MAKE)
 
 all: $(NAME)

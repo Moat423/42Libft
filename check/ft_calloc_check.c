@@ -15,9 +15,9 @@
 
 int	calloc_test_cases(void)
 {
-	size_t	i;
-	size_t	j;
-	size_t	needed_space;
+	size_t					i;
+	size_t					j;
+	unsigned long long int	needed_space;
 
 	i = 0;
 	j = 0;

@@ -16,21 +16,20 @@ The substring begins at index ’start’ and is of
 maximum size ’len’. */
 
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
-	size_t	size;
 	size_t	strlen;
 
-	strlen = ft_strlen(s);
-	if (start > strlen)
+	if (!s)
 		return (NULL);
-	if (strlen - start < len)
-		size = strlen - start;
-	else
-		size = len;
-	substr = (char *) malloc(size + 1);
+	strlen = ft_strlen(s);
+	if (start > strlen || len == 0)
+		return (ft_strdup(""));
+	len = strlen - start;
+	substr = (char *) malloc(len + 1);
 	if (!substr)
 		return (NULL);
 	ft_strlcpy(substr, s + start, len + 1);

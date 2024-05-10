@@ -20,16 +20,20 @@ DEPS =
 SRCS = main.c ft_strnstr_check.c ft_isprint_check.c ft_memchr_check.c \
 	   ft_atoi_check.c ft_bzero_check.c ft_strncmp_check.c \
 	   ft_calloc_check.c ft_strdup_check.c ft_substr_check.c \
+	   ft_strlcpy_check.c
 
-OBJS = $(SRCS:%=$(OBJ_DIR)/%.o)
-LDFLAGS = -L../ -lft
-LIBPATH = ../libft.a
+OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
+LIBPATH = ../
+LDFLAGS = -L$(LIBPATH) -lft
+LIBNAME = libft.a
+DEBUG = 
+DEB_NAME = debug.out
 
-$(NAME): $(OBJS) $(LIBPATH)
-	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
+$(NAME): $(OBJS) $(LIBPATH)$(LIBNAME)
+	$(CC) -o $@ $^ $(LDFLAGS)
 
-$(OBJ_DIR)/%.c.o: $(SRC_DIR)/%.c $(HEADER)| $(OBJ_DIR)
-	$(CC) -c $< $(CFLAGS) -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)| $(OBJ_DIR)
+	$(CC) -c $< $(CFLAGS) $(DEBUG) -o $@
 
 $(OBJ_DIR):
 	mkdir $@
@@ -48,7 +52,14 @@ fclean: clean
 
 re: fclean all
 
-g: $(OBJS) $(LIBPATH)
-	$(CC) -o debug.out $^ $(CFLAGS) $(LDFLAGS) -g
+$(DEB_NAME): $(SRCS)
+	$(CC) -o $@ $(DEBUG) $^ $(wildcard $(LIBPATH)*.c)
 
-.PHONY: all, clean, fclean, re, g, lib
+debug:: DEBUG += -g
+	 
+debug:: $(lib_debug) $(DEB_NAME)
+
+lib_debug:
+	cd ../ && $(MAKE) debug
+
+.PHONY: all, clean, fclean, re, g, lib, lib_debug, debug

@@ -12,10 +12,19 @@
 
 #include "libft.h"
 
-/* remember that I do not have to reassign c_dest to dest, because i just have
+/* 
+ *DESCRIPTION
+    The memmove() function copies len bytes from string src to string dst.
+    The two strings may overlap; the copy is always done in a non-destructive
+	manner.
+RETURN VALUES
+    The memmove() function returns the original value of dst.
+ *
+ * remember that I do not have to reassign c_dest to dest, because i just have
 two pointers, dest is a void pointer to an address, c_dest is a char pointer
 to the same address, so by modifying the content of one, i am modifying 
-the content that both pointers point to, that is the reason i just return dest*/
+the content that both pointers point to, that is the reason i just return dest
+*/
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
@@ -36,10 +45,11 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	else if (src < dest)
 	{
-		while ((i < n))
+		i = n;
+		while ((i >= 0))
 		{
-			c_dest[n - i] = c_src[n - i];
-			i++;
+			c_dest[i] = c_src[i];
+			i--;
 		}
 	}
 	return (dest);

@@ -20,6 +20,7 @@ DEPS = libft.h
 
 BUILD_DIR = .
 SRC_DIR = .
+DEBUG =
 
 SRCS = ft_isascii.c  ft_memmove.c  ft_strlcpy.c  ft_tolower.c \
 ft_bzero.c    ft_isdigit.c  ft_memset.c   ft_strlen.c   ft_toupper.c \
@@ -34,7 +35,7 @@ $(NAME): $(OBJS)
 	$(LIB) $(LIBFLAGS) $@ $^
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(DEPS) -c $^ -o $@ 
+	$(CC) $(CFLAGS) $(DEBUG) $(DEPS) -c $^
 	
 $(OBJS): $(SRSC)
 
@@ -48,4 +49,8 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re
+debug: DEBUG += -g
+
+debug:: $(OBJS)
+
+.PHONY: all, clean, fclean, re, debug

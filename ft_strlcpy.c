@@ -6,13 +6,13 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:30:16 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/05/08 11:46:15 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/05/13 11:42:53 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 * DESCRIPTION
-     The strlcpy() function copies strings.  They are de‐
+     The strlcpy() function copies strings.
      strlcpy()takes the full size of the buffer
      (not just the length) and guarantee to NUL-terminate the result 
 	 (as long as size is larger than 0 or, in the case of strlcat(), as long
@@ -37,15 +37,12 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t	i;
 
 	i = 0;
-	if (ft_strlen(src) < sizeof(dst))
-		dst = (char *)src;
-	else
+	if (size == 0)
+		return (ft_strlen(src));
+	while (((i + 1) < size) && (src[i] != '\0'))
 	{
-		while (((i + 1) < size) && (src[i] != '\0'))
-		{
-			dst[i] = src[i];
-			i++;
-		}
+		dst[i] = src[i];
+		i++;
 	}
 	dst[i] = '\0';
 	return (ft_strlen(src));

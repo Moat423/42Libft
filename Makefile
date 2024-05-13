@@ -6,13 +6,13 @@
 #    By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/22 15:55:27 by lmeubrin          #+#    #+#              #
-#    Updated: 2024/05/08 17:20:47 by lmeubrin         ###   ########.fr        #
+#    Updated: 2024/05/13 12:47:28 by lmeubrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL = /bin/sh
 CC = cc
-CFLAGS = -Werror -Wall -Wextra -I
+CFLAGS = -Werror -Wall -Wextra -I.
 NAME = libft.a
 LIB = ar
 LIBFLAGS = -rcs
@@ -27,7 +27,8 @@ ft_bzero.c    ft_isdigit.c  ft_memset.c   ft_strlen.c   ft_toupper.c \
 ft_isalnum.c  ft_isprint.c  ft_strchr.c \
 ft_isalpha.c  ft_memcpy.c   ft_strlcat.c  ft_strrchr.c ft_strncmp.c \
 ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c \
-ft_substr.c ft_strjoin.c
+ft_substr.c ft_strjoin.c ft_striteri.c ft_strmapi.c ft_putchar_fd.c \
+ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_itoa.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -35,8 +36,8 @@ $(NAME): $(OBJS)
 	$(LIB) $(LIBFLAGS) $@ $^
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(DEBUG) $(DEPS) -c $^
-	
+	$(CC) -c $^ $(CFLAGS) $(DEBUG)
+
 $(OBJS): $(SRSC)
 
 all: $(NAME)

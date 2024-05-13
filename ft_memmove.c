@@ -46,10 +46,10 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	else if (src < dest)
 	{
 		i = n;
-		while ((i >= 0))
+		while ((i != 0))
 		{
-			c_dest[i] = c_src[i];
 			i--;
+			c_dest[i] = c_src[i];
 		}
 	}
 	return (dest);

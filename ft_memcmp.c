@@ -6,7 +6,7 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:13:55 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/05/07 18:24:31 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:30:28 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	c_s2 = (const unsigned char *) s2;
 	if ((s1 == NULL) || (s2 == NULL))
 		return (0);
-	while (n > 0)
+	while (n + 1!= 0)
 	{
 		if (c_s1 != c_s2)
 			return (c_s1 - c_s2);

@@ -19,7 +19,7 @@ strlcat() take the full size of the destination buffer and guarantee
 NUL-termination if there is room. Note that room for the NUL should be included
 in dstsize. Also note that strlcat() only operate on true ''C'' strings. This
 means that both src and dst must be NUL-terminated.
-strlcat() appends string src to the end of dst. It will append at most dstsize
+strlcat() appends string src to the end of dst. It will append at most size
 - strlen(dst) - 1 characters. It will then NUL-terminate, unless dstsize is 0 
 or the original dst string was longer than dstsize (in practice this should not
 happen as it means that either dstsize is incorrect or that dst is not a proper
@@ -42,11 +42,11 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 
 	i = 0;
 	destlen = ft_strlen(dest);
-	if (size == 0)
+	if (size <= destlen)
 		return (destlen + ft_strlen(src));
-	while (dest[i] && ((i + 1) < size))
+	while (dest[destlen + i] && ((i + 1) < size))
 	{
-		dest[destlen + i] = src[i];
+		dest[destlen -1 + i] = src[i];
 		i++;
 	}
 	dest[size] = '\0';

@@ -24,7 +24,7 @@ strimm: the trimmed output string.
 
 #include "libft.h"
 
-size_t	count_allocation_size(char const *s1, char const *set)
+static size_t	count_allocation_size(char const *s1, char const *set)
 {
 	unsigned int	i;
 	unsigned int	count;
@@ -38,11 +38,11 @@ size_t	count_allocation_size(char const *s1, char const *set)
 	}
 	if (i == ft_strlen(s1))
 		return (count);
-	i = ft_strlen(s1);
-	while (i >= 0 && (ft_strrchr(set, s1[i]) != NULL))
+	i = ft_strlen(s1) + 1;
+	while (i != 0 && (ft_strrchr(set, s1[i]) != NULL))
 	{
-		count++;
 		i--;
+		count++;
 	}
 	return (count);
 }

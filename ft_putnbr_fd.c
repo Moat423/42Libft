@@ -21,7 +21,7 @@ fd: The file descriptor on which to write.
 
 #include "libft.h"
 
-int	convertwrite_fd(int n, int fd)
+void	convertwrite_fd(unsigned int n, int fd)
 {
 	char	num_buff;
 
@@ -29,20 +29,18 @@ int	convertwrite_fd(int n, int fd)
 		convertwrite_fd(n / 10, fd);
 	num_buff = n % 10 + '0';
 	write(fd, &num_buff, 1);
-	return (n);
 }
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == -2147483648)
-		write(1, "-2147483648", 11);
-	else
+	unsigned int	pnum;
+
+	if (n < 0)
 	{
-		if (n < 0)
-		{
-			write(fd, "-", 1);
-			n *= -1;
-		}
-		convertwrite_fd(n, fd);
+		write(fd, "-", 1);
+		pnum = (unsigned int) -n;
 	}
+	else
+		pnum = (unsigned int) n;
+	convertwrite_fd(pnum, fd);
 }

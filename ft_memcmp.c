@@ -38,7 +38,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	c_s2 = (const unsigned char *) s2;
 	if ((s1 == NULL) || (s2 == NULL))
 		return (0);
-	while (n + 1!= 0)
+	while (n + 1 != 0)
 	{
 		if (c_s1 != c_s2)
 			return (c_s1 - c_s2);

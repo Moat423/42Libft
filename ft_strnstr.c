@@ -23,28 +23,22 @@ the first occurence of needle is returned.
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *s, const char *needle, size_t len)
 {
-	size_t	l_index;
+	size_t	j;
 	size_t	i;
 
-	l_index = 0;
 	i = 0;
-	if (*little == '\0')
-		return ((char *) big);
-	while ((i < len) && (big[i]))
+	if (!(*needle))
+		return ((char *) s);
+	while ((s[i]) && (i < len))
 	{
-		if (big[i] != little[0])
-			i++;
-		while (big[i] == little[l_index] && big[i] && little[l_index])
-		{
-			i++;
-			l_index++;
-		}
-		if (little[l_index] == '\0')
-			return ((char *)((i - l_index) + big));
-		else
-			l_index = 0;
+		j = 0;
+		while (i + j < len && s[i + j] && needle[j] && s[i + j] == needle[j])
+			j++;
+		if (!needle[j])
+			return ((char *) &(s[i]));
+		i++;
 	}
 	return (NULL);
 }

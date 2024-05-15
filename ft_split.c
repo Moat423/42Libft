@@ -64,33 +64,41 @@ static void	make_free(char **sarr, int i)
 	free(sarr);
 }
 
-char	**ft_split(char const *s, char c)
+char	**fill_array(const char *s, char c, char **sarr)
 {
-	char			**sarr;
 	size_t			arr_i;
 	int				i;
-	int				j;
+	int				saved_i;
 
 	i = 0;
 	arr_i = 0;
+	while (s[i])
+	{
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i])
+			saved_i = i;
+		while (s[i] && s[i] != c)
+			i++;
+		sarr[arr_i] = strldup(s + i, i - saved_i);
+		if (sarr[arr_i] == NULL)
+		{
+			make_free(sarr, arr_i);
+			return (NULL);
+		}
+		arr_i++;
+	}
+	sarr[arr_i] = NULL;
+	return (sarr);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char			**sarr;
+
 	sarr = (char **) malloc((count_words(s, c) + 1) * sizeof(char *));
 	if (!sarr)
 		return (NULL);
-	while (s[j])
-	{
-		while (s[j] && s[j] == c)
-			j++;
-		while (s[i + j] && s[i + j] != c)
-			i++;
-		sarr[arr_i] = strldup(s + j, i);
-		if (sarr[arr_i] == NULL)
-		{
-			make_free(sarr, i);
-			return (NULL);
-		}
-		i = 0;
-		j += i;
-		arr_i++;
-	}
+	sarr = fill_array(s, c, sarr);
 	return (sarr);
 }

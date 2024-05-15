@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
+/*   By: lmeubrin <lmeubrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:30:16 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/05/13 11:42:53 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/05/15 09:21:43 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 
 	i = 0;
 	if (size == 0)
+	{
+		dst[0] = '\0';
 		return (ft_strlen(src));
+	}
 	while (((i + 1) < size) && (src[i] != '\0'))
 	{
 		dst[i] = src[i];

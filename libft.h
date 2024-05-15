@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
+/*   By: lmeubrin <lmeubrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:41:25 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/05/13 13:24:40 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/05/14 08:47:09 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <unistd.h>
+typedef struct s_list
+{
+    void			*content;
+    struct s_list	*next;
+}	t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

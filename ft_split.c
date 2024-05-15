@@ -31,6 +31,7 @@ unsigned int	count_words(const char *s, char c)
 	unsigned int	i;
 
 	words = 0;
+	i = 0;
 	while (s[i])
 	{
 		while (s[i] == c && s[i])
@@ -45,7 +46,7 @@ unsigned int	count_words(const char *s, char c)
 	return (words);
 }
 
-char	*strldup(const char *s, size_t len)
+static char	*strldup(const char *s, size_t len)
 {
 	char	*dup;
 
@@ -56,7 +57,7 @@ char	*strldup(const char *s, size_t len)
 	return (dup);
 }
 
-void	make_free(char **sarr, size_t i)
+static void	make_free(char **sarr, int i)
 {
 	while (i >= 0)
 		free(sarr[i--]);
@@ -67,26 +68,28 @@ char	**ft_split(char const *s, char c)
 {
 	char			**sarr;
 	size_t			arr_i;
-	size_t			i;
+	int				i;
+	int				j;
 
 	i = 0;
 	arr_i = 0;
-	sarr = (char **) malloc(count_words(s, c));
+	sarr = (char **) malloc((count_words(s, c) + 1) * sizeof(char *));
 	if (!sarr)
 		return (NULL);
-	while (s[i])
+	while (s[j])
 	{
-		while (*s && *s == c)
-			s++;
-		while (s[i] && s[i] != c)
+		while (s[j] && s[j] == c)
+			j++;
+		while (s[i + j] && s[i + j] != c)
 			i++;
-		sarr[arr_i] = strldup(s, i);
+		sarr[arr_i] = strldup(s + j, i);
 		if (sarr[arr_i] == NULL)
 		{
 			make_free(sarr, i);
 			return (NULL);
 		}
 		i = 0;
+		j += i;
 		arr_i++;
 	}
 	return (sarr);

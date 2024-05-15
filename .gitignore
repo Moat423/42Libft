@@ -2,3 +2,4 @@
 */a.out
 ./check/a.out
 *.swp
+*.o

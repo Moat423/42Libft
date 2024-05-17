@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 15:06:50 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/05/17 15:38:48 by lmeubrin         ###   ########.fr       */
+/*   Created: 2024/05/17 11:56:05 by lmeubrin          #+#    #+#             */
+/*   Updated: 2024/05/17 14:30:34 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-* Allocates (with malloc(3)) and returns a new node.
-The member variable ’content’ is initialized with
-the value of the parameter ’content’. The variable
-’next’ is initialized to NULL.
+* DESCRIPTION
+* Iterates the list ’lst’ and applies the function
+’f’ on the content of each node.
+* VARS
+* lst: The address of a pointer to a node.
+f: The address of the function used to iterate on
+the list
 */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list	*new_node;
+	t_list	*buff;
 
-	if (content)
+	buff = lst;
+	if (buff && f)
 	{
-		new_node = malloc(sizeof(t_list));
-		if (!new_node)
-			return (NULL);
-		new_node->content = content;
-		new_node->next = NULL;
-		return (new_node);
+		while (buff->next)
+		{
+			f(buff->content);
+			buff = buff->next;
+		}
 	}
-	return (NULL);
 }

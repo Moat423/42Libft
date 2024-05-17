@@ -26,8 +26,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	joined_str = (char *) malloc(len1 + len2 + 1);
+	if (!joined_str)
+		return (NULL);
 	ft_strlcpy(joined_str, s1, len1 + 1);
-	ft_strlcpy(joined_str + len1 - 1, s2, len2 + 1);
+	ft_strlcpy(joined_str + len1, s2, len2 + 1);
 	joined_str[len1 + len2 + 1] = '\0';
 	return (joined_str);
 }

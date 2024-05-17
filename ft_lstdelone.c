@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 15:06:50 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/05/17 15:38:48 by lmeubrin         ###   ########.fr       */
+/*   Created: 2024/05/17 11:16:25 by lmeubrin          #+#    #+#             */
+/*   Updated: 2024/05/17 14:12:15 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-* Allocates (with malloc(3)) and returns a new node.
-The member variable ’content’ is initialized with
-the value of the parameter ’content’. The variable
-’next’ is initialized to NULL.
+* DESCRIPTION
+* Takes as a parameter a node and frees the memory of
+the node’s content using the function ’del’ given
+as a parameter and free the node. The memory of
+’next’ must not be freed.
+VARS
+lst: The node to free.
+del: The address of the function used to delete the content.
+ALLOWED FUNCTIONS:
+free
 */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	t_list	*new_node;
-
-	if (content)
-	{
-		new_node = malloc(sizeof(t_list));
-		if (!new_node)
-			return (NULL);
-		new_node->content = content;
-		new_node->next = NULL;
-		return (new_node);
-	}
-	return (NULL);
+	if (lst->content && del)
+		del(lst->content);
+	free(lst);
 }

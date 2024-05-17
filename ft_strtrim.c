@@ -23,48 +23,51 @@ strimm: the trimmed output string.
 */
 
 #include "libft.h"
+#include <stdio.h>
 
-static size_t	count_allocation_size(char const *s1, char const *set)
+static size_t	get_back_i(char const *s1, char const *set)
 {
 	unsigned int	i;
-	unsigned int	count;
+	unsigned int	back_i;
 
-	i = 0;
-	count = 0;
-	while (s1[i] && (ft_strchr(set, s1[i]) != NULL))
-	{
-		count++;
-		i++;
-	}
-	if (i == ft_strlen(s1))
-		return (count);
-	i = ft_strlen(s1) + 1;
-	while (i != 0 && (ft_strrchr(set, s1[i]) != NULL))
+	back_i = 0;
+	if (!s1[0])
+		return (0);
+	i = ft_strlen(s1) - 1;
+	while (i != 0 && (ft_strchr(set, s1[i]) != NULL))
 	{
 		i--;
-		count++;
+		back_i++;
 	}
-	return (count);
+	return (back_i);
 }
 
-char	*fill_string(char const *s1, char const *set, char *dst, size_t size)
+static char	*get_start(char const *s1, char const *set)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (s1[i] && (ft_strchr(set, s1[i]) != NULL))
-		i++;
-	ft_strlcpy(dst, s1 + i, size + 1);
-	return (dst);
+	while (*s1 && (ft_strchr(set, *s1) != NULL))
+		s1++;
+	return ((char *) s1);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
+	char	*strim;
+	char	*start;
 	size_t	size;
-	char	*strimm;
 
-	size = count_allocation_size(s1, set);
-	strimm = (char *) malloc(size + 1);
-	strimm = fill_string(s1, set, strimm, size);
-	return (strimm);
+	if (!s1 || !set)
+		return (NULL);
+	start = get_start(s1, set);
+	if (ft_strlen(start) != 0)
+		size = ft_strlen(start) - get_back_i(s1, set);
+	else
+		size = 0;
+	strim = (char *) malloc(size + 1);
+	if (strim == NULL)
+		return (NULL);
+	if (size == 0)
+		strim[0] = '\0';
+	else
+		ft_strlcpy(strim, start, size + 1);
+	return (strim);
 }

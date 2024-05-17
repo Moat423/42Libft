@@ -6,7 +6,7 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:20:25 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/04/25 11:10:35 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/05/17 16:39:15 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ It is the caller's responsibility to handle this.
 */
 
 #include "libft.h"
-
-size_t	ft_strlen(const char *s);
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {

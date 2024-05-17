@@ -6,7 +6,7 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:18:09 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/05/17 15:40:48 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/05/17 17:35:30 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	{
 		while (*lst)
 		{
-			current = (*lst);
+			current = (*lst)->next;
 			ft_lstdelone(*lst, del);
-			del((*lst)->content);
-			(*lst) = (*lst)->next;
-			free(current);
+			(*lst) = current;
 		}
 	}
 }

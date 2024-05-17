@@ -6,7 +6,7 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 11:24:23 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/05/17 16:29:03 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/05/17 17:59:14 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,35 @@ added to the list.
 
 void	ft_lstadd_back(t_list **lst, t_list *new_node)
 {
-	if (lst)
+	t_list	*tmp;
+
+	if (!lst || !new_node)
+		return ;
+	if (!(*lst))
 	{
-		while (*lst)
-			(*lst) = (*lst)->next;
 		(*lst) = new_node;
 	}
+	else
+	{
+		tmp = *lst;
+		while ((tmp)->next)
+			(tmp) = (tmp)->next;
+		(tmp)->next = new_node;
+	}
 }
+/*
+{
+	t_list	*last_node;
+
+	if (!(*lst))
+		return ;
+	if (lst)
+	{
+		last_node = ft_lstlast(*lst);
+		if (!last_node)
+			last_node = new_node;
+		else
+			last_node->next = new_node;
+	}
+}
+*/

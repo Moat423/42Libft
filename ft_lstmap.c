@@ -6,7 +6,7 @@
 /*   By: lmeubrin <lmeubrin@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:07:04 by lmeubrin          #+#    #+#             */
-/*   Updated: 2024/05/17 14:54:48 by lmeubrin         ###   ########.fr       */
+/*   Updated: 2024/05/17 17:52:41 by lmeubrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	if (!lst || !f || !del)
 		return (NULL);
 	new_lst = NULL;
-	while (lst->next)
+	while (lst)
 	{
 		content = f(lst->content);
-		if (content)
-			new_node = ft_lstnew(content);
-		else
-			free(content);
+		new_node = ft_lstnew(content);
 		if (!new_node)
 		{
 			ft_lstclear(&new_lst, del);
@@ -52,7 +49,5 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		ft_lstadd_back(&new_lst, new_node);
 		lst = lst->next;
 	}
-	if (!lst)
-		return (NULL);
 	return (new_lst);
 }

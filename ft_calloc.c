@@ -24,22 +24,13 @@ RETURN
  functions return NULL.  NULL may also  be returned by a successful call to
  malloc() with a size of zero, or by a successful call to calloc() with 
  nmemb or size equal to zero.
-
-* this overflow check, looks at whether I would overflow when i give malloc 
-* count*size as an argument because it also works with size_t. if it overflow,
-* it will allocate too little space but seem normal. That is why I would like
-* to add this, so I return NULl in that case, as to not write more than the
-* allocated size
-	if (count > SIZE_MAX / size)
-		return (NULL);
-
 */
 
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
 
-	if (count > SIZE_MAX / size)
+	if (size && count > SIZE_MAX / size)
 		return (NULL);
 	ptr = malloc(count * size);
 	if (!ptr)

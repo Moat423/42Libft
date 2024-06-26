@@ -29,16 +29,14 @@ c_c: the int char converted to a char
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	c_c;
 	size_t	i;
 	size_t	len;
 
 	i = 0;
-	c_c = (char) c;
 	len = ft_strlen(s);
 	while (i <= len)
 	{
-		if (c_c == s[i])
+		if ((char) c == s[i])
 			return ((char *)(s + i));
 		i++;
 	}

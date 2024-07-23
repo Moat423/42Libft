@@ -10,12 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include <limits.h>
+
 int	ft_atoi(const char *str)
 {
 	int		nb;
 	int		sign;
 	int		i;
-	char	int_min[11];
 
 	nb = 0;
 	sign = 1;
@@ -24,8 +26,6 @@ int	ft_atoi(const char *str)
 	i = 0;
 	while (((str[i] >= '\t') && (str[i] <= '\r')) || (str[i] == ' '))
 		i++;
-	if (str == int_min)
-		return (-2147483648);
 	if (str[i] == '-')
 	{
 		sign = -1;

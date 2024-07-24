@@ -47,7 +47,7 @@ $(NAME): $(OBJS)
 %.o: %.c $(DEPS)
 	$(CC) -c $< $(CFLAGS) -o $@
 
-$(OBJS): $(SRSC)
+$(OBJS): $(SRCS)
 
 all: $(NAME)
 
